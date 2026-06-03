@@ -1,19 +1,123 @@
 <%- layout('layouts/boilerplate') %>
+<style>
+    .show-listing{
+        
+        border: 0px solid black;
+        border-radius: 24px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .show-card{
+        padding: 1rem;
+        transition: all 0.3s ease;
+    }
+    .show-card:hover{
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+    .show-img{
+        border-radius: 20px;
+        object-fit: cover;
+    }
+    .card-text{
+        line-height: 1.7;
+        color: #555;
+    }
+    .owner i{
+        color: #fe424d;
+    }
+    .title{
+        margin-top: 2rem;
+    }
+    .owner{
+        margin-bottom: 0.5rem;
+    }
+    .card-body{
+        margin-top: 0.5rem;
+    }
+    .listing-info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+    .info-block{
+        display: flex;
+        align-items: center;
+        min-width: 180px;
+        padding-right: 2rem;
+        border-right: 1px solid #dcdcdc;
+        
+    }
+    .info-block:last-child{
+        border-right: none;
+    }
+    .info-logo{
+        font-size: 2rem;
+        opacity: 1;
+        color: #fe424d;
+        margin-right: 0.8rem;
+    }
+    .info-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+    .info-value{
+        font-size: 1.2rem;
+        font-weight: 900;
+        margin-bottom: 0;
+    }
+
+    .info-label{
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
+    .title h3{
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+</style>
 <body>
-    <div class="row mt-3">
-        <div class="col-8 offset-3">
-            <h3><%= listing.title %></h3>
+    <div class="row mt-3 show-listing">
+        <div class="col-8 offset-3 title" >
+            <h3><b><%= listing.title %></b></h3>
         </div>
         <div class="card col-6 offset-3 show-card listing-card">
+             <p class="card-text owner">Owned by <b><i><%= listing.owner.username %></i></b></p>
             <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing image">
             <div class="card-body">
-                <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
                 <p class="card-text"><%= listing.description %></p>
-                <p class="card-text">₹<%= listing.price?.toLocaleString('en-IN') || "N/A" %></p>
-                <p class="card-text"><%= listing.location %></p>
-                <p class="card-text"><%= listing.country %></p>
+                <div class="listing-info">
+                    <div class="info-block">
+                        <div class="info-logo"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div class="info-text">
+                            <p class="card-text info-value">₹<%= listing.price?.toLocaleString('en-IN') || "N/A" %></p>
+                            <p class="card-text info-label">Price/night</p>
+                        </div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-logo"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-text">
+                            <p class="card-text info-value"><%= listing.location %></p>
+                            <p class="card-text info-label">Location</p>
+                        </div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-logo"><i class="fa-solid fa-earth-americas"></i></div>
+                        <div class="info-text">
+                            <p class="card-text info-value"><%= listing.country %></p>
+                            <p class="card-text info-label">Country</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        
+        
         <% if(currentUser && currentUser._id.equals(listing.owner._id)) { %>
             <div class="btns">
                 <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">
@@ -57,9 +161,12 @@
                 </form>
             <% } %>
 
-            <hr>
-
-            <p><b>All Reviews</b></p>
+            
+            <% if(listing.reviews.length > 0) { %>
+                <hr>
+                <p><b>All Reviews</b></p>
+            <% } %>
+            
             <div class="row">
                 <% for(review of listing.reviews) { %>
                     <div class="card col-5 ms-3 mb-3">
