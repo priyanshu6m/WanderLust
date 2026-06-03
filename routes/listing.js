@@ -26,6 +26,8 @@ router
 //new route - show form to create new listing
 router.get('/new', isLoggedIn, listingController.renderNewForm);
 
+router.get("/search", listingController.searchListings);
+
 router
   .route('/:id')
   .get(wrapAsync(listingController.showListing))
@@ -53,4 +55,7 @@ router.get(
   wrapAsync(listingController.renderEditForm)
 );
 
+
+
 module.exports = router;
+
