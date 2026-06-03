@@ -32,6 +32,20 @@
         display: flex;
         align-items: center ;
     }
+    @media (max-width: 768px){
+        #filters{
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            flex-wrap: nowrap;
+        }
+        #filters::-webkit-scrollbar {
+            display: none;
+        }
+        .filter{
+            flex: 0 0 auto;
+        }
+    }
         
 </style>
 <body>
