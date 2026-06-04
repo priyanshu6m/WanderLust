@@ -1,4 +1,13 @@
 <%- layout('layouts/boilerplate') %>
+<style>
+  .filter-btn {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 0.7rem;
+  }
+
+</style>
 <body>
   <div class="row mt-3">
     <div class="col-8 offset-2">
@@ -67,8 +76,43 @@
             required />
           <div class="invalid-feedback">Location should be valid</div>
         </div>
+        <h6>Choose Filters for Your Listing</h6>
+        <div class="filter-btn">
+          <div>
+            <input type="checkbox" class="btn-check" id="btn-check-1-outlined" name="listing[filters]" value="Room" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-check-1-outlined">Room</label><br>
+          </div>
+          <div>
+            <input type="checkbox" class="btn-check" id="btn-check-2-outlined" name="listing[filters]" value="Iconic Cities" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-check-2-outlined">Iconic cities</label><br>
+          </div>
+          <div>
+            <input type="checkbox" class="btn-check" id="btn-check-3-outlined" name="listing[filters]" value="Mountains" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-check-3-outlined">Mountains</label><br>
+          </div>
+          <div>
+            <input type="checkbox" class="btn-check" id="btn-check-4-outlined" name="listing[filters]" value="Castles" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-check-4-outlined">Castles</label><br>
+          </div>
+          <div>
+            <input type="checkbox" class="btn-check" id="btn-check-5-outlined" name="listing[filters]" value="Amazing Pools" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-check-5-outlined">Amazing Pools</label><br>
+          </div>
+          <div>
+            <input type="checkbox" class="btn-check" id="btn-check-6-outlined" name="listing[filters]" value="Camping" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-check-6-outlined">Camping</label><br>
+          </div>
+          <div>
+            <input type="checkbox" class="btn-check" id="btn-check-7-outlined" name="listing[filters]" value="Farms" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-check-7-outlined">Farms</label><br>
+          </div>
+          <div>
+            <input type="checkbox" class="btn-check" id="btn-check-8-outlined" name="listing[filters]" value="Arctic" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-check-8-outlined">Arctic</label><br>
+          </div>
+        </div>
 
-        <button type="submit" class="btn btn-dark add-btn mt-3">Add</button>
+        <button type="submit" class="btn btn-dark add-btn mt-4 mb-5">Create</button>
       </form>
     </div>
   </div>
