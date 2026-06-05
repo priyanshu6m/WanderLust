@@ -1,8 +1,17 @@
 const Listing = require('../models/listing');
 
 module.exports.index = async (req, res) => {
-    let allListings = await Listing.find({});
-    res.render('listings/index.ejs', { listings: allListings });
+    let {category} = req.query;
+    let listings;
+    if (category) {
+      
+      listings = await Listing.find({filters: category });
+      console.log(listings);
+    }
+    else {
+      listings = await Listing.find({});
+    }
+    res.render("listings/index.ejs", {listings, category});
   };
 
 module.exports.renderNewForm =  (req, res) => {

@@ -28,13 +28,13 @@ const listingSchema = new Schema({
   filters: [{
     type: String,
     enum: [
-      'Room',
-      'Iconic Cities',
-      'Mountains',
-      'Castles',
-      'Camping',
-      'Farms',
-      'Beach',
+      'room',
+      'iconic cities',
+      'mountains',
+      'castles',
+      'camping',
+      'farms',
+      'beach',
     ]
   }]
 });

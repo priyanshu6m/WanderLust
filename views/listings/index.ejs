@@ -14,6 +14,9 @@
         opacity: 1;
         cursor: pointer;
     }
+    .filter.active{
+        opacity: 1;
+    }
     .filter p {
         font-size: 0.8rem;
         margin-top: 0.5rem;
@@ -32,6 +35,9 @@
         display: flex;
         align-items: center ;
     }
+    .xyz span{
+            color: #fe424d;
+        }
     @media (max-width: 1400px){
         #filters{
             overflow-x: auto;
@@ -51,37 +57,37 @@
 <body>
     <!-- <h1>All String</h1> -->
     <div id="filters">
-        <div class="filter">
+        <div class="filter" data-category="trending">
                 <div><i class="fa-solid fa-fire"></i></div>
                 <p>Trending</p>
         </div>
-        <div class="filter">
+        <div class="filter" data-category="room">
                 <div><i class="fa-solid fa-bed"></i></div>
                 <p>Room</p>
         </div>
-         <div class="filter">
+         <div class="filter" data-category="iconic cities">
                 <div><i class="fa-solid fa-mountain-city"></i></div>
                 <p>Iconic cities</p>
         </div>
-        <div class="filter">
+        <div class="filter" data-category="mountains">
                 <div><i class="fa-solid fa-mountain"></i></div>
                 <p>Mountains</p>
-        </div> <div class="filter">
+        </div> <div class="filter" data-category="castles">
                 <div><i class="fa-brands fa-fort-awesome"></i></div>
                 <p>Castles</p>
         </div>
-        <div class="filter">
+        <div class="filter" data-category="amazing pools">
                 <div><i class="fa-solid fa-person-swimming"></i></div>
                 <p>Amazing Pools</p>
         </div>
-        <div class="filter">
+        <div class="filter" data-category="camping">
                 <div><i class="fa-solid fa-campground"></i></div>
                 <p>Camping</p>
-        </div> <div class="filter">
+        </div> <div class="filter" data-category="farms">
                 <div><i class="fa-solid fa-cow"></i></div>
                 <p>Farms</p>
         </div>
-        <div class="filter">
+        <div class="filter" data-category="arctic">
                 <div><i class="fa-solid fa-snowflake"></i></div>
                 <p>Arctic</p>
         </div>
@@ -95,6 +101,7 @@
 
     </div>
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% if(listings.length > 0) { %>
         <% for (let listing of listings) { %>
             <a href="/listings/<%= listing._id %>" class="listings-link">
                 <div class="card col listing-card" >
@@ -110,6 +117,10 @@
                 </div>
             </a>
         <% } %>
+        <% } else { %>
+            <h6 class="xyz">No listing for <span ><%= category %></span> filter select another filter</h6>
+            <% } %>
+        
     </div>
     
     <script>
@@ -126,6 +137,13 @@
             }
 
         })
+        let filters = document.getElementsByClassName('filter');
+        for(let filter of filters){
+            filter.addEventListener('click', () => {
+                const category = filter.dataset.category
+                window.location.href = `/listings?category=${category}`;
+            })
+        }
         
     </script>
 </body>
