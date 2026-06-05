@@ -6,7 +6,7 @@ module.exports.index = async (req, res) => {
     if (category) {
       
       listings = await Listing.find({filters: category });
-      console.log(listings);
+      
     }
     else {
       listings = await Listing.find({});
