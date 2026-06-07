@@ -88,6 +88,14 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req, res) => {
+    if (req.session.splashShown) {
+        return res.redirect("/listings");
+    }
+
+    req.session.splashShown = true;
+    res.render("startingAnimation.ejs");
+});
 
 app.use('/listings', listingsRouter);
 app.use('/listings/:id/reviews', reviewsRouter);

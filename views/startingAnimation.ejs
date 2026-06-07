@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: gilroy;
+            
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1{
+            font-size: 100px;
+            color: #fe424d;
+            overflow: hidden;
+        }
+        h1 span{
+            display: inline-block;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Wanderlust</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function breakText() {
+            let h1 = document.querySelector("h1");
+            let h1text = h1.textContent;
+            let splitedText = h1text.split("");
+            let clutter = "";
+
+            splitedText.forEach(function(letter) {
+                clutter += `<span>${letter}</span>`;
+            });
+
+            h1.innerHTML = clutter;
+        }
+
+        breakText();
+
+        // Wave animation
+        gsap.from("h1 span", {
+            y: 100,
+            opacity: 0,
+            scale: 0.5,
+            rotation: 15,
+            duration: 1,
+            stagger: {
+                each: 0.08,
+                from: "center"
+            },
+            ease: "elastic.out(1, 0.5)"
+        });
+
+        // Redirect after 2.5 seconds
+        setTimeout(() => {
+            window.location.href = "/listings";
+        }, 2000);
+    </script>
+</body>
+</html>
