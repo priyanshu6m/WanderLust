@@ -1,25 +1,157 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="row mt-3">
-    <h1 class="col-6 offset-3">SignUp on Wanderlust</h1>
-    <div class="col-6 offset-3">
-        <form action="/signup" method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" class="form-control" name="username" required>
-                    <div class="valid-feedback">Looks good!</div>
+<style>
+    .signup-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .signup-card {
+        border: none;
+        border-radius: 24px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .signup-title {
+        font-weight: 700;
+        color: #222;
+        
+    }
+
+    .form-control {
+        border-radius: 12px;
+        padding: 0.8rem 1rem;
+    }
+
+    .form-control:focus {
+        border-color: #fe424d;
+        box-shadow: 0 0 0 0.2rem rgba(254, 66, 77, 0.2);
+    }
+
+    .signup-btn {
+        background-color: #fe424d;
+        border: none;
+        border-radius: 12px;
+        padding: 0.8rem;
+        font-weight: 600;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .signup-btn:hover {
+        background-color: #e63946;
+        transform: translateY(-2px);
+    }
+    @media (max-width: 1300px){
+    .signup-title{
+        font-size: 1.8rem;
+    }
+}
+    @media (max-width: 768px) {
+        .signup-container {
+            min-height: auto;
+            padding: 2rem 0;
+        }
+
+        .signup-title {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .card-body {
+            padding: 2rem 1.5rem !important;
+        }
+
+        .signup-title {
+            font-size: 1.4rem;
+            
+        }
+    }
+</style>
+
+<div class="container signup-container">
+    <div class="row justify-content-center w-100">
+
+        <div class="col-lg-5 col-md-7 col-sm-10 col-11">
+
+            <div class="card signup-card">
+                <div class="card-body p-5">
+
+                    <h2 class="text-center mb-4 signup-title">
+                        Sign Up on Wanderlust
+                    </h2>
+
+                    <form action="/signup" method="POST" class="needs-validation" novalidate>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">
+                                Username
+                            </label>
+
+                            <input
+                                type="text"
+                                id="username"
+                                class="form-control"
+                                name="username"
+                                placeholder="Choose a username"
+                                required
+                            >
+
+                            <div class="invalid-feedback">
+                                Please enter a username.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                            <div class="invalid-feedback">
+                                Please enter a valid email.
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="password" class="form-label">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password"
+                                class="form-control"
+                                name="password"
+                                placeholder="Create a password"
+                                required
+                            >
+
+                            <div class="invalid-feedback">
+                                Please enter a password.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn signup-btn w-100">
+                            Sign Up
+                        </button>
+
+                    </form>
+
+                </div>
             </div>
-            <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" class="form-control" name="email" required>
-                    
-            </div>
-            <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" class="form-control" name="password" required>
-                     
-            </div>
-            <button type="submit" class="btn btn-success  mt-3">SignUp</button> 
-        </form>
+
+        </div>
+
     </div>
 </div>
