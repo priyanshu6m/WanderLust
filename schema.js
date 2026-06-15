@@ -10,13 +10,13 @@ module.exports.listingSchema = Joi.object({
         image: Joi.string().allow("", null),
         filters: Joi.array().items(
             Joi.string().valid(
-                'Room',
-                'Iconic Cities',
-                'Mountains',
-                'Castles',
-                'Camping',
-                'Farms',
-                'Beach',
+                'room',
+                'iconic cities',
+                'mountains',
+                'castles',
+                'camping',
+                'farms',
+                'arctic',
             )
         )
     }).required()
