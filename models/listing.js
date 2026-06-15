@@ -32,9 +32,10 @@ const listingSchema = new Schema({
       'iconic cities',
       'mountains',
       'castles',
+      'amazing pools',
       'camping',
       'farms',
-      'beach',
+      'arctic',
     ]
   }]
 });
