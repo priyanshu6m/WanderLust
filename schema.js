@@ -14,9 +14,11 @@ module.exports.listingSchema = Joi.object({
                 'iconic cities',
                 'mountains',
                 'castles',
+                'amazing pools',
                 'camping',
                 'farms',
                 'arctic',
+                'beach',
             )
         )
     }).required()

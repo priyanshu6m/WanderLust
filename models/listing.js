@@ -36,6 +36,7 @@ const listingSchema = new Schema({
       'camping',
       'farms',
       'arctic',
+      'beach',
     ]
   }]
 });
